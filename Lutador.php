@@ -16,7 +16,7 @@
                 $this->nacionalidade = $na;
                 $this->idade = $id;
                 $this->altura = $al;
-                $this->peso = $pe;
+                $this->setPeso($pe);
                 $this->vitorias = $vi;
                 $this->derrotas = $de;
                 $this->empates = $em;
@@ -55,7 +55,7 @@
             public function getCategoria() {
                 return $this->categoria;
             }
-            public function setCategoria() {
+            private function setCategoria() {
                 if ($this->peso < 52.2) {
                     $this->categoria = "Inválido";
                 }elseif ($this->peso <= 70.3) {
@@ -88,10 +88,20 @@
             }
             //Metodos
             public function apresentar() {
-
+                echo "<p> ------------------------------------------------------------------</p> ";
+                echo "<p>Chegou a hora! O lutatador ".$this->getNome();
+                echo " veio diretamente de ". $this->getNacionalidade();
+                echo " tem ". $this->getIdade(). " anos e pesa ". $this->getPeso(). "Kgs</p>";
+                echo "<br/>Ele tem ". $this->getVitorias(). " vitorias ";
+                echo $this->getDerrotas(). " derrotas e ". $this->getEmpates(). " empates";
+                echo "<P>---------------------------------------------------------------------------</P>";
             }
             public function status() {
-
+                echo "<P>-----------------------------------------------------------------------------</P>";
+                echo "<p>". $this->getNome(). " é um peso ". $this->getCategoria();
+                echo " e ja ganhou ". $this->getVitorias(). " vezes, perdeu ". $this->getDerrotas(). " vezes,";
+                echo " empatou ". $this->getEmpates(). " vezes!</p>";
+                echo "<P>----------------------------------------------------------------------------</P>";
             }
             public function ganharLuta() {
                 $this->setVitorias($this->getVitorias() + 1);
